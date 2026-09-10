@@ -38,6 +38,9 @@
 	    lsp-mode
 	    nix-mode
 	    zig-mode
-    ];
+    ];    
   };
+
+  home.file.".emacs".source = ./emacs/init.el;
+  home.file.".emacs.d/themes".source = ./emacs/themes;
 }
