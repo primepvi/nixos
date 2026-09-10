@@ -42,6 +42,6 @@
     ];    
   };
 
-  home.file.".emacs".source = ./emacs/init.el;
-  home.file.".emacs.d/themes".source = ./emacs/themes;
+  home.file.".emacs".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/emacs/init.el";
+  home.file.".emacs.d".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/emacs";
 }
