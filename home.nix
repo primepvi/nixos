@@ -20,7 +20,8 @@
 	       email = "pedrobernardesv@gmail.com";
        };
 
-       init.defaultBranch = "main";	
+       init.defaultBranch = "main";
+       credential.helper = "!gh auth git-credential";
      };
   };
   
