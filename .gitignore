@@ -3,5 +3,9 @@
 \#*\#
 .#*
 
+emacs/.cache
+emacs/.lsp-session-v1
+
 # bin
 result
+

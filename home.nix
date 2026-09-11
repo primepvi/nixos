@@ -5,6 +5,7 @@
   home.homeDirectory = "/home/pedro";
   home.stateVersion = "25.11";
   home.packages = with pkgs; [
+     zig
      discord
      git
      gh
@@ -29,12 +30,16 @@
     enable = true;
 
     extraPackages = epkgs: with epkgs; [
+      use-package
     	magit
 	    which-key
 	    vertico
 	    orderless
 	    marginalia
 	    corfu
+      kind-icon
+      all-the-icons
+      all-the-icons-completion
 	    
 	    lsp-mode
 	    nix-mode
