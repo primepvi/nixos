@@ -5,6 +5,8 @@
 
 emacs/.cache
 emacs/.lsp-session-v1
+emacs/transient
+emacs/elpa
 
 # bin
 result

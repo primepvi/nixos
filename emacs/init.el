@@ -18,7 +18,9 @@
                     :height 110)
 
 (add-to-list 'custom-theme-load-path ".emacs.d/themes")
+(add-to-list 'load-path ".emacs.d/modes")
 (load-theme 'sol)
+(require 'bee-mode)
 
 (require 'use-package)
 (use-package marginalia
@@ -72,4 +74,10 @@
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((zig-mode . lsp)))
+  :hook ((zig-mode . lsp)
+	 (nix-mode . lsp))
+  :config
+  (setq lsp-nix-nixd-server-path "nixd"))
+
+(use-package nixpkgs-fmt
+  :hook (nix-mode . nixpkgs-fmt-on-save-mode))

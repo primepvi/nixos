@@ -6,13 +6,14 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
   nix.settings.experimental-features = [
-  	"nix-command"
-  	"flakes"
+    "nix-command"
+    "flakes"
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -90,18 +91,18 @@
     description = "Pedro Viana";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   fonts.packages = with pkgs; [
-     nerd-fonts.jetbrains-mono
-     material-symbols
+    nerd-fonts.jetbrains-mono
+    material-symbols
   ];
 
   # Install firefox.
   programs.firefox.enable = true;
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
