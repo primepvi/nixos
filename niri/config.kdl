@@ -69,6 +69,7 @@ binds {
     Mod+W { spawn "sh" "-c" "pkill swaybg; swaybg -i ~/Imagens/wallpapers/daidark.jpg -m fill"; }
 
     Mod+Q { close-window; }
+    Mod+Tab { toggle-overview; }
 
     Mod+Shift+E { quit; }
 
