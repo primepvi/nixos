@@ -20,7 +20,6 @@
     typescript
     typescript-language-server
 
-    swaybg
     rofi
 
     quickshell
@@ -87,4 +86,13 @@
   home.file.".emacs.d".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/emacs";
   home.file.".config/niri".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/niri";
   home.file.".config/quickshell".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/quickshell";
+  home.file.".zshenv".text = ''
+    # Environment variables
+    . "/etc/profiles/per-user/pedro/etc/profile.d/hm-session-vars.sh"
+
+    # Only source this once
+    if [[ -z "$__HM_ZSH_SESS_VARS_SOURCED " ]]; then
+       export __HM_ZSH_SESS_VARS_SOURCED=1         
+    fi
+  '';
 }

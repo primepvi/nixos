@@ -52,6 +52,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.defaultSession = "niri";
   programs.niri.enable = true;
+  programs.zsh.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -102,6 +103,8 @@
     packages = with pkgs; [
       alacritty
     ];
+
+    shell = pkgs.zsh;
   };
 
   fonts.packages = with pkgs; [

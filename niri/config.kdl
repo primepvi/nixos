@@ -57,7 +57,11 @@ prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
 spawn-at-startup "quickshell"
-spawn-at-startup "swaybg" "-i" "~/Imagens/wallpapers/daidark.jpg" "-m" "fill"
+
+layer-rule {
+   match namespace="^QuickshellWallpaper$"
+   place-within-backdrop true
+}
 
 animations {
     slowdown 1.0
