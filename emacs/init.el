@@ -72,12 +72,32 @@
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
-(use-package lsp-mode
-  :commands lsp
-  :hook ((zig-mode . lsp)
-	 (nix-mode . lsp))
+(use-package eglot
   :config
-  (setq lsp-nix-nixd-server-path "nixd"))
+  (add-to-list 'eglot-server-programs
+               '(nix-mode . ("nixd")))
+  
+  (add-to-list 'eglot-server-programs
+	       '(qml-mode . ("qmlls" "-E")))
+  
+  (add-to-list 'eglot-server-programs
+               '((typescript-mode typescript-ts-mode tsx-ts-mode)
+                 . ("typescript-language-server" "--stdio")))
+
+  :hook ((zig-mode . eglot-ensure)
+         (nix-mode . eglot-ensure)
+         (c-mode . eglot-ensure)
+         (c++-mode . eglot-ensure)
+         (typescript-ts-mode . eglot-ensure)
+         (tsx-ts-mode . eglot-ensure)
+	 (qml-mode . eglot-ensure)))
+
+(use-package typescript-ts-mode
+  :hook
+  (typescript-ts-mode . (lambda ()
+                          (setq-local indent-tabs-mode nil)
+                          (setq-local tab-width 2)
+                          (setq-local typescript-ts-mode-indent-offset 2))))
 
 (use-package nixpkgs-fmt
   :hook (nix-mode . nixpkgs-fmt-on-save-mode))

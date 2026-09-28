@@ -2,7 +2,7 @@
 ;;; Code:
 
 (defconst bee-keywords
-  '("let" "var" "const"
+  '("let" "var" "const" "lit"
     "fn" "return"
     "if" "else" "then"
     "when" "otherwise"
@@ -12,19 +12,30 @@
     "and" "or" "not"))
 
 (defconst bee-types
-  '("int" "string" "bool" "void"))
+  '("int" "string" "bool" "void" "char" "uint" "byte" "ubyte" "float" "Range" "Function" "atom"))
 
 (defconst bee-constants
   '("true" "false" "null"))
-
 (defconst bee-font-lock-keywords
   `(
+    ;; Strings
+    ("\"\\(?:\\\\.\\|[^\"\\\\]\\)*\""
+     . font-lock-string-face)
+
+    ;; Characters
+    ("'\\(?:\\\\.\\|[^'\\\\]\\)'"
+     . font-lock-constant-face)
+
+    ;; Atoms
+    (":\\(?:[[:alpha:]_]\\)[[:alnum:]_]*"
+     . font-lock-constant-face)
+
     ;; Numbers
     ("\\_<[0-9]+\\(?:\\.[0-9]+\\)?\\_>"
      . font-lock-constant-face)
 
     ;; Operators
-    ("\\(?:->\\|==\\|!=\\|<=\\|>=\\|[+*/%<>=-]\\)"
+    ("\\(?:->\\|==\\|\\.\\.\\|!=\\|<=\\|>=\\|[+*/%<>=|-]\\)"
      . font-lock-builtin-face)
 
     ;; Keywords
@@ -44,7 +55,7 @@
      1 font-lock-function-name-face)
 
     ;; Variable definitions
-    ("\\_<\\(?:let\\|var\\|const\\)\\_>[ \t]+\\([[:word:]_]+\\)"
+    ("\\_<\\(?:let\\|var\\|const\\|lit\\)\\_>[ \t]+\\([[:word:]_]+\\)"
      1 font-lock-variable-name-face)
 
     ;; Function calls
