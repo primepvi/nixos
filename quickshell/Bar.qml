@@ -33,8 +33,8 @@ PanelWindow {
 
     margins {
 	top: 4
-	left: 4
-	right: 4
+	left: 10
+	right: 10
 	bottom: 4
     }
 

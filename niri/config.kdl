@@ -16,9 +16,14 @@ layout {
     gaps 10
 
     focus-ring {
+      off
+    }
+    
+    border {
+	on
         width 2
 	active-color "#52525B"
-	inactive-color "#27272a"
+	inactive-color "#27272b"
     }
 
     shadow {

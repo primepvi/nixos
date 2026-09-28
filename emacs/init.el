@@ -19,8 +19,10 @@
 
 (add-to-list 'custom-theme-load-path ".emacs.d/themes")
 (add-to-list 'load-path ".emacs.d/modes")
-(load-theme 'sol)
+(load-theme 'kanagawa-dragon)
 (require 'bee-mode)
+
+(global-display-line-numbers-mode 1)
 
 (require 'use-package)
 (use-package marginalia
@@ -28,7 +30,7 @@
   (marginalia-align 'right)
   :init
   (marginalia-mode))
-
+  
 (use-package all-the-icons)
 (use-package all-the-icons-completion
   :after (marginalia all-the-icons)
