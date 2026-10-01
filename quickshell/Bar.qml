@@ -19,6 +19,10 @@ PanelWindow {
 
     property string volumeIcon: volume == 0 ? "volume_off" : "volume_up"
 
+    property string time: Qt.formatDateTime(new Date(), "dddd, MMMM d, HH:mm")
+
+    property bool bluetoothMenuEnabled: false
+
     screen: Quickshell.screens[0]
 
     anchors {
@@ -37,6 +41,15 @@ PanelWindow {
     implicitHeight: 32
     color: "transparent"
 
+    Timer {
+	interval: 1000
+	running: true
+	repeat: true
+	onTriggered: {
+	    bar.time = Qt.formatDateTime(new Date(), "dddd, MMMM d, HH:mm")
+	}
+    }
+
     BarRect {
         anchors {
             left: parent.left
@@ -51,7 +64,7 @@ PanelWindow {
         }
 
         Text {
-            text: Qt.formatDateTime(new Date(), "dddd, MMMM d, HH:mm")
+            text: time
             font.family: "Ubuntu"
             font.pixelSize: 14
             color: "white"
@@ -76,14 +89,20 @@ PanelWindow {
 
         BarRect {
             Text {
-                text: "notifications_unread"
+                text: "notifications"
                 font.family: "Material Symbols Rounded"
                 font.pixelSize: 18
                 color: "white"
             }
         }
 
+	BluetoothMenu {
+	    marginRight: 10
+	    enabled: bar.bluetoothMenuEnabled
+	}
+
         BarRect {
+	    id: actions
             Text {
                 text: "wifi"
                 font.family: "Material Symbols Rounded"
@@ -96,6 +115,13 @@ PanelWindow {
                 font.family: "Material Symbols Rounded"
                 font.pixelSize: 18
                 color: "white"
+
+		MouseArea {
+		    anchors.fill: parent
+		    onClicked: {
+			bar.bluetoothMenuEnabled = !bar.bluetoothMenuEnabled
+		    }
+		}
             }
 
             Text {
