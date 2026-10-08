@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import Quickshell.Wayland
 import Quickshell.Services.UPower
 import Quickshell.Services.Pipewire
 
@@ -9,6 +10,8 @@ PanelWindow {
     PwObjectTracker {
         objects: Pipewire.defaultAudioSink ? [Pipewire.defaultAudioSink] : []
     }
+    
+    WlrLayershell.layer: WlrLayer.Top
 
     property int battery: Math.round(UPower.displayDevice.percentage * 100)
     property int volume: Math.round(Pipewire.defaultAudioSink.audio.volume * 100)
@@ -29,17 +32,10 @@ PanelWindow {
         top: true
         left: true
         right: true
-    }
+    }    
 
-    margins {
-        top: 4
-        left: 10
-        right: 10
-        bottom: 4
-    }
-
-    implicitHeight: 32
-    color: "transparent"
+    implicitHeight: 42
+    color: "black"
 
     Timer {
 	interval: 1000
@@ -54,7 +50,8 @@ PanelWindow {
         anchors {
             left: parent.left
             verticalCenter: parent.verticalCenter
-        }
+	    leftMargin: 10
+        }	    
 
         Text {
             text: ""
@@ -83,6 +80,7 @@ PanelWindow {
         anchors {
             right: parent.right
             verticalCenter: parent.verticalCenter
+	    rightMargin: 10
         }
 
         spacing: 8

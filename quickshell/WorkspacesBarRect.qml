@@ -53,7 +53,7 @@ Rectangle {
 		    id: mouseArea
 		    anchors.fill: parent
 		    onClicked: {
-			Niri.changeFocus(modelData.id)
+			Niri.changeFocus(modelData.idx)
 		    }
 		}
             }

@@ -5,5 +5,5 @@ import Quickshell
 
 Singleton {
     id: root
-    property string wallpaperSource: "/home/pedro/Imagens/wallpapers/daidark.jpg"
+    property string wallpaperSource: "/home/pedro/Imagens/wallpapers/onigirl.png"
 }

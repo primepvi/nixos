@@ -82,6 +82,18 @@
       ];
   };
 
+  programs.obsidian = {
+    enable = true;
+    vaults.notes.target = "Documents/Obsidian";
+
+    defaultSettings = {
+      app = {
+        alwaysUpdateLinks = true;
+        spellcheck = true;
+      };
+    };
+  };
+
   home.file.".emacs".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/emacs/init.el";
   home.file.".emacs.d".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/emacs";
   home.file.".config/niri".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/niri";
